@@ -18,8 +18,7 @@ export default function Navbar() {
       <div className={styles.links}>
         <Link href="/">Home</Link>
         {/* <Link href="/about">About</Link> */}
-        
-        <Link href="/register" className={styles['buttons']} >Register</Link>
+        <Link href="/register">Register</Link>
       </div>
     </nav>
   );

@@ -1,11 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./main.module.css";
 
 export default function Main() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [data, setData] = useState([]);
-  
+
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -32,27 +31,6 @@ export default function Main() {
     )
   );
 
-  
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/getCollages');
-        if (response.ok) {
-          const result = await response.json();
-          setData(result);
-          console.log(data);
-        } else {
-          throw new Error('Failed to fetch data');
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <>
       <div className={styles.container}>
@@ -73,19 +51,19 @@ export default function Main() {
           <table className={styles["custom-table"]}>
             <thead>
               <tr>
-                <th>Collage Name</th>
-                <th>University</th>
-                <th>Zip Code</th>
-                <th>CutOff</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
               </tr>
             </thead>
             <tbody>
-              {data.map((item) => (
-                <tr key={item.collage_name}>
-                  <td>{item.collage_name}</td>
-                  <td>{item.university}</td>
-                  <td>{item.zip_code}</td>
-                  <td>{item.cs_department}</td>
+              {filteredData.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.name}</td>
+                  <td>{item.age}</td>
+                  <td>{item.city}</td>
                 </tr>
               ))}
             </tbody>
