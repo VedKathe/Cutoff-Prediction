@@ -1,9 +1,11 @@
 "use client"
-import React,{ useState } from "react";
+import React from "react";
 import styles from "./register.module.css";
+import { useState } from "react";
 
 export default function register() {
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [formData, setFormData] = useState({
     collageName: '',
     university: '',
